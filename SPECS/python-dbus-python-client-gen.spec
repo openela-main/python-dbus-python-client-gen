@@ -1,11 +1,11 @@
 %global srcname dbus-python-client-gen
 
 Name:           python-%{srcname}
-Version:        0.8
-Release:        5%{?dist}
+Version:        0.8.3
+Release:        1%{?dist}
 Summary:        Python Library for Generating dbus-python Client Code
 
-License:        MPLv2.0
+License:        MPL-2.0
 URL:            https://github.com/stratis-storage/dbus-python-client-gen
 Source0:        %{url}/archive/v%{version}/%{srcname}-%{version}.tar.gz
 
@@ -21,6 +21,11 @@ Summary:        %{summary}
 %{?python_provide:%python_provide python3-%{srcname}}
 BuildRequires:  python3-devel
 BuildRequires:  python3-setuptools
+# Required due to a setuptools bug that was fixed in setuptools 61.0.
+# Previous to that version, setuptools loads the __init__.py module to
+# obtain the value of the __version__ attribute.
+BuildRequires:  python3-dbus
+BuildRequires:  python3-into-dbus-python >= 0.08
 
 %description -n python3-%{srcname} %{_description}
 
@@ -42,6 +47,10 @@ Python 3 version.
 %{python3_sitelib}/dbus_python_client_gen-*.egg-info/
 
 %changelog
+* Fri Apr 28 2023 Bryan Gurney <bgurney@redhat.com> - 0.8.3-1
+- Update to 0.8.3
+- Resolves: rhbz#2189682
+
 * Tue Aug 10 2021 Mohan Boddu <mboddu@redhat.com> - 0.8-5
 - Rebuilt for IMA sigs, glibc 2.34, aarch64 flags
   Related: rhbz#1991688
