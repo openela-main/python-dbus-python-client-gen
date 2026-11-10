@@ -1,8 +1,8 @@
 %global srcname dbus-python-client-gen
 
 Name:           python-%{srcname}
-Version:        0.8.3
-Release:        7%{?dist}
+Version:        0.8.4
+Release:        2%{?dist}
 Summary:        Python Library for Generating dbus-python Client Code
 
 License:        MPL-2.0
@@ -42,6 +42,14 @@ Python 3 version.
 %{python3_sitelib}/dbus_python_client_gen-*.egg-info/
 
 %changelog
+* Wed May 6 2026 cchung <cchung@redhat.com> - 0.8.4-2
+- Bump release and initiated build for RHEL 10.3
+  Resolves: RHEL-174123
+
+* Fri Feb 6 2026 cchung <cchung@redhat.com> - 0.8.4-1
+- Update to 0.8.4
+  Resolves: RHEL-145373
+
 * Tue Oct 29 2024 Troy Dawson <tdawson@redhat.com> - 0.8.3-7
 - Bump release for October 2024 mass rebuild:
   Resolves: RHEL-64018
